@@ -1,0 +1,42 @@
+{% extends "html_base.html" %}
+
+{% block head %}
+		<script type="text/javascript">
+			function callback(data) {
+				if (data.refresh == true) {
+					document.location = window.location.href;
+				}
+				if (data.n >= 3) {
+					$('#wait_h').html('Ready to begin the experiment -- waiting on participants to bring window into focus');
+				}
+				document.getElementById('wait').innerHTML = data.n;
+			}
+		
+			function checkin() {
+				var focus = document.hasFocus()
+				$.getJSON('/trustgame/json/queue/{{ pk }}/'+focus, callback)
+				window.setTimeout(function () {
+						checkin();
+						}, 2000);
+			}
+		</script>
+{% endblock %}
+
+{% block body %}
+	<h1>Waiting Room</h1>
+	<h2 id='wait_h'>Please wait while other players join the queue.</h2>
+	<h3 id='adviseh'></h3>
+	<h2 id='adviseg'></h2>
+	<p>There are <b id='wait'></b> participants waiting, including you. As soon as there are three participants you will be redirected to the game.</p>
+	
+{% endblock %}
+
+{% block onload %}
+checkin();
+window.setTimeout(function () {
+	$('#adviseh').html('Thank you for your patience. At this point you may submit your HIT on Amazon Turk, you will be approved.');
+	$('#adviseg').html('To earn bonuses and participate in the experiment, please continue waiting.');
+			},
+		1000*60*10
+);
+{% endblock %}

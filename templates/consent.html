@@ -1,0 +1,83 @@
+{% extends "html_base.html" %}
+{% block body %}
+
+<table>
+	<tr>
+		<td><h2>INDIANA UNIVERSITY BLOOMINGTON</h3></td>
+		<td class="right">IRB Study #0807000075</td>
+	</tr>
+	<tr>
+		<td><h1>INFORMED CONSENT STATEMENT</h1></td>
+	</tr>
+	<tr>
+		<td><h2>Group Behavior</h2></td>
+	</tr>
+</table>
+
+<p>You are invited to participate in a research study that examines how people think, act, and make decisions in groups.   You were selected as a possible subject because you indicated that 
+you wished to participate on this website.  We ask that you read this form and ask any questions you may have before agreeing to be in the study.</p>
+
+<p>The study is being conducted by Dr. Robert Goldstone in the Department of Psychological and Brain Sciences.</p>
+
+<h3>STUDY PURPOSE</h3>
+<p>People often learn and make decisions using information gathered from others. The purpose of this study is to better understand how you make choices in the presence of information about 
+similar choices made by others.</p>
+
+<h3>NUMBER OF PEOPLE TAKING PART IN THE STUDY</h3>
+<p>If you agree to participate, you will be one approximately 5000 subjects who will be participating in this research.</p>
+
+<h3>PROCEDURES FOR THE STUDY</h3>
+<p>If you agree to be in the study, a simple task will be presented for you to complete over a series of approximately 10-30 rounds. During the experiment, you will be interacting with a group 
+of humans or artificial intelligent agents, and you may have access to information about how they have attempted to complete the task so far. This task may involve numerical guesses, choosing 
+sets of elements from a number of options, and/or coordinating your choices with those of others in the group. Each experiment should take approximately 5-10 minutes. You may participate in as 
+many experiments as you like.</p>
+
+<h3>RISKS OF TAKING PART IN THE STUDY</h3>
+<p>Participation in this study involves a potential risk of loss of confidentiality.  This risk is minimized by the investigator, as outlined in the “Confidentiality” section .</p>
+
+<h3>BENEFITS OF TAKING PART IN THE STUDY</h3>
+<p>An understanding of how groups behave can help us to predict the behaviors of complex organizations and develop technologies that promote the efficient and accurate flow of information 
+within groups. You benefit from this experience because you learn something about how an experiment is designed and conducted, what issues are of interest to cognitive scientists, and what 
+kinds of group behaviors emerge when individuals try to reach their goals in an environment that consists largely of other individuals.</p>
+
+<h3>ALTERNATIVES TO TAKING PART IN THE STUDY</h3>
+<p>Instead of being in the study, you have these options:  Not being in the study.</p>
+
+<h3>CONFIDENTIALITY</h3>
+<p>Efforts will be made to keep your personal information confidential.  We cannot guarantee absolute confidentiality.  Your personal information may be disclosed if required by law.  Your 
+identity will be held in confidence in reports in which the study may be published and in databases in which results may be stored.  Organizations that may inspect and/or copy your research 
+records for quality assurance and data analysis include groups such as the study investigator and his/her research associates, the IUB Institutional Review Board or its designees, and (as 
+allowed by law) state or federal agencies, specifically the Office for Human Research Protections (OHRP), etc. who may need to access your research records. If you choose to submit your 
+address in order that we can mail a prize to you, such information will be retained only for the purposes of mailing, and will thereafter be deleted.</p>
+
+<h3>PAYMENT</h3>
+<p>For participating in this study, you will receive points which may be redeemed for prizes such as a T-shirt from our lab.</p> 
+
+<h3>CONTACTS FOR QUESTIONS OR PROBLEMS</h3>
+<p>For questions about the study or a research-related injury, contact the researcher Dr. Robert Goldstone at 812-855-4853, or rgoldsto@indiana.edu. For questions about your rights as a 
+research participant or to discuss problems, complaints or concerns about a research study, or to obtain information, or offer input, contact the IU Human Subjects office, 530 E Kirkwood Ave, 
+Carmichael Center, 203, Bloomington IN 47408, 812-856-4242 or by email at irb@iu.edu</p>
+
+<h3>VOLUNTARY NATURE OF STUDY</h3>
+<p>Taking part in this study is voluntary.  You may choose not to take part or may leave the study at any time.  Leaving the study will not result in any penalty or loss of benefits to which 
+you are entitled.  Your decision whether or not to participate in this study will not affect your current or future relations with the investigator(s).</p>
+
+<h3>SUBJECT’S CONSENT</h3>
+
+<p>In consideration of all of the above, I give my consent to participate in this research study.</p>
+<p>If you would like a written record of this consent form for your records, print a copy of this form before you click the below box to begin the experiment.</p>
+
+
+	<form method='post'>
+		{% csrf_token %}
+
+		<div class="quiz">
+			{{ form.as_p }}
+			<input type="submit" class="submitbutton" name="return" value="Submit" />
+		</div>
+	</form>
+
+{% endblock %}
+
+{% block onload %}	{% endblock %}
+

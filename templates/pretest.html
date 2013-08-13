@@ -1,0 +1,36 @@
+{% extends "html_base.html" %}
+
+
+{% block body %}
+	<h1>A little quiz</h1>
+	<h3>Examine the game diagram below and answer a few questions regarding it.</h3>
+	<h1>{{ context.self_msg }}</h1>
+	<div id="drawing{{ context.pk }}" class="drawing"></div>
+
+	<form method='post'>
+		{% csrf_token %}
+		<div class=quiz>
+			{{ form.as_p }}
+		</div>
+		<div>
+			<input type="submit" class="submitbutton" name="return" value="Submit" />
+		</div>
+	</form>
+
+	{% include 'history.html' %}
+	<div class='nav'>
+	<input type=button class=submit
+			value="Instructions"
+			onClick="self.location='../instructions/'">
+	<input type=button class=submit
+			value="Practice"
+			onClick="self.location='../practice/'">
+	</div>
+{% endblock %}
+
+{% block onload %}
+	{% include 'diagram.js' %}
+	getHistory();
+{% endblock %}
+
+

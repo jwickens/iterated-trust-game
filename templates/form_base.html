@@ -1,0 +1,54 @@
+<form method='post' id='gameform{{ context.pk }}'>
+{% csrf_token %}
+{% block stats %}
+	<table class="stats">
+		<tr>
+			<td><p>Tokens: {{ context.tokens }}</p></td>
+			<td></td>
+			<td><p>Earnings: {{context.earnings }}</p></td>
+		</tr>
+	</table>
+{% endblock%}
+{% block header %}
+{% endblock %}
+{% block form %}
+	<table class="inner-game-form">
+		{% if context.form.non_field_errors %}
+		<tr><td colspan=99>{{ context.form.non_field_errors }}</td></tr>
+		{% endif %}
+		{% for field in context.form %}
+		{% if field.html_name != 'default_0' and field.html_name != 'default_1' and field.html_name != 'default_2' %}
+		<tr>
+			<td colspan=99>{{ field.errors }}</td>
+		</tr>
+		<tr>
+			<td {% block cls %}{% endblock %}>{{ field.label_tag }}</td>
+			<td>{{ field }}</td>
+		</tr>
+		{% endif %}
+		{% endfor %}
+	</table>
+		{{ context.form.button|safe }}
+{% endblock %}
+</form>
+{% block script %}
+<script type='text/javascript'>
+	$(document).ready( function() {
+		{% block onload %}
+		{% endblock %}
+		var form{{ context.pk }} = $('#gameform{{ context.pk }}');
+		form{{ context.pk }}.submit(function(e) {
+			 e.preventDefault();
+			 $("#gamebutton{{ context.pk }}").attr('disabled', true)
+			 $('#submit{{ context.pk }}').load(
+				 '/trustgame/json/submit/{{ context.pk }}/',
+				 form{{ context.pk }}.serializeArray(),
+				 function(responseText, responseStatus) {
+				 $("#gamebutton{{ context.pk }}").attr('disabled', false)
+					}
+				);
+			 });
+		$('.inner-game-form > tbody > tr > td').has('input[type="hidden"]').parent().hide()
+	});
+</script>
+{% endblock %}

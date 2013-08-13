@@ -1,0 +1,221 @@
+html {
+    margin: 20px;
+    padding: 50px;
+}
+body {
+    color: #555753;
+    width: 700px;	
+    margin-right: auto;
+    margin-left: auto;
+    font: 75%/1.88889 georgia,sans-serif;
+}
+p {
+    margin-top: 10px;
+    text-align: justify;
+}
+
+h3,.history thead {
+    color: #7D775C;
+    font: italic 1.4em georgia,sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    }
+h1 {
+    color: #92C92B;
+    font: 2em georgia,sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    }
+div {
+	margin-top: 1px;
+}
+.urlbox {
+	height: 2em;
+	width: 100%;
+	margin: 15px;
+	text-align: center;
+}
+.quiz label {
+	width: 100%;
+}
+.game-form {
+	width: 8em;
+}
+.right {
+	text-align:right
+}
+form, .nav, .nav_preview {
+	padding: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-top: 5px;
+	background-color: #E9E5D9;
+}
+.stats, .inner-form {
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.stats {
+	font-weight: bold;
+	font-size: 1.5em; 
+	color: #494545;
+}
+.stats td {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.stats p {
+	text-align: center;
+	width: 60%;
+}
+.stats p, .completedStage {
+	border-bottom: 2px solid #92C92B;
+}
+.nav_preview {
+	text-align: center;
+}
+.nav_preview tbody tr td {
+	width: 80px;
+}
+table {
+	border-collapse: collapse;
+}
+
+.history {
+	border: 1px solid black;
+	width: 100%;
+	height: auto;
+	margin-bottom: 20px;
+}
+.history thead {
+	text-align: center;
+}
+.history td {
+	padding: 10px;
+	padding-left: 30px;
+	border: 1px dotted grey;
+}
+
+.survey {
+	line-height: 95%;
+	border: none;
+}
+.survey td {
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-bottom: 8px;
+	padding-top: 8px;
+	border: none;
+}
+
+.survey tbody td {
+	border-bottom: 1px dotted grey;
+	border-top: 1px dotted grey;
+
+}
+
+.aligncenter {
+	text-align: center;
+	font-size: 200%;
+}
+.span, textarea, table {
+	width: 100%;
+}
+textarea {
+	height: 100px;
+}
+.nav input {
+	margin: 20px;
+}
+.left {
+	float: left;
+}
+form, .nav, .stats, .span, .stats p{
+	position: relative;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center, .small{
+	text-align: center;
+}
+.center {
+	width: 8em;
+}
+.small {
+	width: 3em;
+}
+.small {
+	font-size: 80%;
+}
+
+.errorlist, .quiz ul{
+    list-style: none;
+    text-align: justify;
+    padding: 0px 10px 0px 10px;
+    margin: 0.75em 0.75em .5em .5em;
+    width: auto;
+    border-top: 4px dotted black;
+    border-left: 4px dotted black;
+    border-right: 4px dotted black;
+    font-size: 120%;
+    color:white;
+    background-color: #F65754; 
+}
+.drawing {
+	height: 550px;
+	background: #494545;
+	border: 1px solid black;
+	color: white;
+	padding: 50px;
+	top-margin: 5px;
+	bottom-margin: 5px;
+	position: relative;
+}
+.submitbutton, .nav input
+{
+	display: inline-block;
+	float: right;
+	font-weight: bold;
+	font-size: 12px;
+	cursor: pointer;
+	color: #ffffff;
+	padding-top: 8px;
+	padding-right: 10px;
+	padding-bottom: 8px;
+	padding-left: 10px;
+	text-decoration: none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 1px 1px 3px rgba( 0, 0, 0, .5 );
+	-moz-box-shadow: 1px 1px 3px rgba( 0, 0, 0, .5 );
+	box-shadow: 1px 1px 3px rgba( 0, 0, 0, .5 );
+	text-shadow: -1px -1px 0px #455566;
+	border-top: solid #a6aeb9 1px;
+	border-right: solid #66707d 1px;
+	border-bottom: solid #303e4f 1px;
+	border-left: solid #6b7582 1px;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#838b96), to(#515966));
+	background: -webkit-linear-gradient(top, #838b96, #515966);
+	background: -moz-linear-gradient(top, #838b96, #515966);
+	background: -o-linear-gradient(top, #838b96, #515966);
+	background: -ms-linear-gradient(top, #838b96, #515966);
+	background: linear-gradient(top, #838b96, #515966);
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#838b96, endColorStr=#515966);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#838b96, endColorStr=#515966);
+}
+.submitbutton:hover, .nav input:hover
+{
+    box-shadow: 1px 1px 3px rgba( 0, 0, 0, .5 ), inset 0 0 20px #8e94a2;
+}
+.submitbutton:active, .nav input:active
+{
+    color: #bbb;
+    border: 1px solid #3d4651;
+    background: #5e6874;
+    box-shadow: 0px 0px 3px rgba( 0, 0, 0, .3), inset 0 0 20px #2b3446;
+}

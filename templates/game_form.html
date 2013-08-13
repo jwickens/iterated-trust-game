@@ -1,0 +1,24 @@
+{% extends 'form_base.html' %}
+{% block cls %}class='game-form'{% endblock %}
+	{% block header %}
+	{% endblock %}
+{% block onload %}
+	var fields = [],
+	field_labels = [],
+	field_html = [];
+	{% for field in context.form %}
+	{% if field.html_name == 'default_0' or field.html_name == 'default_1' or field.html_name == 'default_2' %}
+	fields.push('{{ field.html_name }}');
+	field_labels.push('{{ field.label_tag }}');
+	field_html.push('{{ field }}');
+	{% endif %}
+	{% endfor %}
+	function td(txt) {
+		return '<td>'+txt+'</td>'
+		}
+	for (var i=0; i<fields.length; i++) {
+		field = fields[i].split('_')[1]
+		$('.inner-game-form > tbody > tr > td > input[name="transfer'+field+'"]').parent().after(td(field_html[i])+td(field_labels[i]));
+	}
+{% endblock %}
+

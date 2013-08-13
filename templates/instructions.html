@@ -1,0 +1,68 @@
+{% extends "html_base.html" %}
+{% block head %}
+{% endblock %}
+{% block body %}
+<h1>Instructions</h1>
+	{% if msg %}
+	<h2>{{ msg }}</h2>
+	{% else %}
+	<h2>Please read these instructions carefully. You will be quizzed on your understanding of the game before you are allowed to continue.</h2>
+	{% endif %}
+
+	<h3>Overview</h3>
+	<p>In this experiment you will be asked to make decisions given what others are doing. When someone transfers <b>X</b> tokens to you, you receive <b>3X</b> tokens. You will then have the 
+	opportunity to return however much you like of those <b>3X</b> tokens. Each participant on their turn receives 20 tokens which they can transfer or keep. This participant is called the 
+	"transferer." Any tokens the transferer does not send to other players will be added to his earnings.</p>
+	
+	<p>On the second part of the transferrer's turn the other players, the "returnees," will be asked to enter their decision regarding how many tokens to return to the transferrer.  Thus 
+	there are two parts to any turn: transferring and returning.</p>
+
+	<p>At the end of each turn, any tokens returned to the transferrer are added to his/her earnings, in addition to any tokens that were kept. Moreover, any tokens the returnees kept will 
+	also be added to their earnings. Then a new turn will be begin, with new a new transferrer. Turns are taken clockwise.</p>
+
+	<p>After all the players have taken turns the first player will go again. This continues for a set number of rounds. At this point the experiment will pause to display special 
+	instructions for the second part. During the second part, the identities of the players will be changed so that you cannot know if someone from the first part has the same shape in the 
+	second part.  After the second part there will be a small exit survey and then the experiment will be over.</p>
+
+	<h3>Making Transfers</h3>
+	<p>At the beginning of your turn you will be given <b>20</b> tokens. You will know it's your turn because a bar will appear showing the time that you have left to make your decision. To 
+	enter your decision use the fields below the diagram. You must decide how many tokens you will keep, and how many tokens you will send to each of the other two players. You must always 
+	enter integers from <b>0</b> to <b>20</b>. Note that this means that even if you decide to keep no tokens for yourself or send no tokens to someone, you still have to enter <b>0</b>.</p>
+
+	<p>There are other requirements to transfers. At the beginning of the experiment you will only be allowed to transfer up to <b>10</b> tokens to each of the other players. You can still 
+	send 20 tokens in total, but no more than 10 per player. This requirement may change in the second part.</p>
+
+	<h3>Making Returns</h3>
+	<p>After a transfer is made, the receiving players are asked if they want to return part or all of the transfer that they received. As when transferring returnees will know they have to 
+	make a decision because a bar will appear showing the time left to make their decision. Fields below the diagram are used to enter decisions. Returnees must explicitly indicate how much 
+	they want to keep and how much they want to return. That is, tokens retained or returned must always be integers between 0 and 60.</p>
+
+	<h3>Game Progression</h3>
+	
+	<p>After the returnees have made their return decisions the turn will end and the next player's turn will begin. Turns are always taken clockwise. As participants take turns the game 
+	diagram continues to display old transfers and returns of up to 3 turns ago. The History table will display all transfers and returns made in the current game.</p>
+
+	<p>In the diagram returns and transfers are displayed as arrows. The bigger the arrow, the more was transferred or returned. The transfers are colored the same as the transferrer.  The 
+	returns back to the transferrer are colored the same way. If a player is making a decision their arrow will be black, to indicate that this arrow is from the last time they had their 
+	turn.  When they are done making their decision the arrow will be replaced with the new transfer/return, and the color will be the color of the transferrer again.</p> 
+
+	<h3>Default Decisions</h3>
+
+	<p>If a participant does not make a transfer or return decision in time, they will make an automatic transfer or return decision. Both the default transfer and the default return are 
+	initially set to 0.</p> 
+
+	<p>You can change the automatic transfers and returns. When transferring, there will be a check box to set your default transfers to other players to the amount you transfer on the 
+	current turn. When returning, there is the option of automatically returning a percentage of the transfer received. This must a number from 0% to 100%.</p>
+
+	<h3>Summary</h3>
+	<p>You must always allocate all your tokens, even if someone gave you zero tokens. Transfers are multiplied by 3, returns are not. Transfers and returns that have the same color are 
+	from the same turn. Black transfers/returns are from the last time the current transferrer had his turn, and will be updated at the end of the current turn.</p>
+
+	<div class='nav'>
+	<input type=button class=submit
+			value="Continue"
+			onClick="self.location='../practice/'">
+	</div>
+
+		
+{% endblock %}

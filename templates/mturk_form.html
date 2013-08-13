@@ -1,0 +1,36 @@
+{% extends 'html_base.html' %}
+{% block head_script %}
+
+{% endblock %}
+{% block body %}
+<h3>Please go to the following URL</h3>
+<input type="text" name="urlbox" class='urlbox'
+value="http://perceptsconcepts.psych.indiana.edu/trustgame/mturk/{{ p.workerId }}"
+onclick="this.select()" />
+<p>This experiment is best viewed in a seperate window. Please open the above link in a new tab or window.</p>
+<p>When you are ready to submit your HIT, click on submit below.</p>
+<div class='nav'>
+	<h2 id='failure' class='left'></h2>
+	<input id='verifybutton' type=button class='submit'  value='Submit'  />
+</div>
+{% endblock %}
+{% block reject %}{% endblock %}
+
+{% block onload %}
+function submit_hit(data) {
+	if (data.submit == true){
+		document.location = '{{ p.turkSubmitTo }}'+'/mturk/externalSubmit?assignmentId={{ p.assignmentId }}&user_submit=true';
+	} else {
+		$('#failure').html("You have not succesfully completed the experimental pretest yet.");
+	}
+}
+function verify_hit() {
+	$.ajax({
+		url: 'http://perceptsconcepts.psych.indiana.edu/trustgame/json/verify/{{ p.pk }}',
+		method: 'GET',
+		success: submit_hit,
+	});
+}
+$('#verifybutton').click(verify_hit);
+{% endblock %}
+

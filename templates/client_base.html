@@ -1,0 +1,49 @@
+{% extends "html_base.html" %}
+
+{% block head %}
+		<script type="text/javascript">
+			function callback(data) {
+				if (data.refresh == "true") {
+					window.location = window.location.href;
+					//window.location.reload(true);
+				}
+				{% block checkin_callback %}
+				{% endblock %}
+			}
+		
+			function checkin() {
+				if (document.hasFocus()) {
+				{% block json %}
+					$.getJSON('/trustgame/json/{{ game_state }}',  callback);
+				{% endblock %}
+				}
+				window.setTimeout(function () {
+						checkin();
+						}, 2000);
+			}
+		</script>
+{% endblock %}
+
+
+{% block body %}
+{% endblock %}
+
+{% block script %}
+		<script type="text/javascript">
+			$(document).ready(function() {
+				{% block onload %}
+				{% endblock %}
+				checkin();
+			});
+		</script>
+{% endblock %}
+
+{% block form %}
+<div id="form">
+	<p>Tokens: {{ tokens }}</p>
+	<form method='post'>{% csrf_token %}
+		{{ form.as_p }}
+		{{ button|safe }}
+	</form>
+</div>
+{% endblock %}

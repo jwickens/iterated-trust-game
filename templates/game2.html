@@ -1,0 +1,35 @@
+{% extends "html_base.html" %}
+
+{% block head %}
+<script type='text/javascript'>
+	callback = function (data) {
+		checkinURL = data.checkinURL;
+		if (data.refresh) {
+			if (data.expired != true) { getHistory(); }
+			if (data.survey == true) { document.location = '../survey/'; }
+			$.getScript('/trustgame/json/loadscreen/{{ context.pk }}');
+			$('#submit{{ context.pk }}').load('/trustgame/json/loadform/{{ context.pk }}/');
+		}
+	};
+
+</script>
+{% endblock %}
+
+{% block body %}
+<h1 id='selfmsg{{ context.pk }}'>{{ context.self_msg }}</h1>
+	<div id="draw" class="drawingcontainer">
+		<div id="timer{{ context.pk }}" class="timer"></div>
+		<div id="drawing{{ context.pk }}" class="drawing"></div>
+	</div>
+
+
+	<div id="submit{{ context.pk }}">
+	{% include 'transition_form.html' %}
+	</div>
+
+	{% include 'history.html' %}
+{% endblock %}
+
+{% block onload %}
+	{% include 'checkin.js' %}
+{% endblock %}

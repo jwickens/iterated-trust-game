@@ -1,0 +1,20 @@
+{% extends 'html_base.html' %}
+{% block body %}
+<h1>There was an error.</h1>
+{% if msg %}
+<p>{{ msg|safe }}</p>
+{% endif %}
+<h2>Please write the administrator at jwickens@indiana.edu</h2>
+<p> In your message, describe the problem, and include any helpful information such as:</p>
+<ul>
+	<li>your internet browser version</li>
+	<li>the time that this error occured</li>
+	<li>what steps you took prior to reaching this error.</li>
+{% if p_num %}
+{% if p_num != 'None' %}
+	<li>the identification number {{ p_num }}.</li>
+{% endif %}
+{% endif %}
+</ul>
+<h3>Thank you for your patience and understanding.</h3>
+{% endblock %}

@@ -1,0 +1,23 @@
+<h2>History</h2>
+<table id='history{{ context.pk }}' class='history'>
+	<thead>
+		<tr>
+			<td>Turn</td>
+			<td>Transfers</td>
+			<td>Returns</td>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
+<script type='text/javascript'>
+historyURL = '/trustgame/json/loadhistory/{{ context.pk }}/';
+getHistory = function() {
+$.ajax({
+		url: historyURL,
+		type:'GET',
+		success: function (data) {
+				 $('#history{{ context.pk }} > tbody').html(data.actions);
+				}
+	});
+};
+</script>

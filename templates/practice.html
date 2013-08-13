@@ -1,0 +1,61 @@
+{% extends 'html_base.html' %}
+
+{% block head %}
+	<script type='text/javascript'>
+		callback = function (data) {
+			checkinURL = data.checkinURL;
+			if (data.refresh) {
+				getHistory();
+				$.getScript('/trustgame/json/loadscreen/{{ form0.pk }}');
+				$('#submit{{ context0.pk }}').load('/trustgame/json/loadform/{{ context0.pk }}/');
+				$('#submit{{ context1.pk }}').load('/trustgame/json/loadform/{{ context1.pk }}/');
+				$('#submit{{ context2.pk }}').load('/trustgame/json/loadform/{{ context2.pk }}/');
+			}
+		};
+	</script>
+{% endblock %}
+{% block body %}
+	<h1>Practice</h1>
+	<h2>This is a demo of the actual experiment</h2>
+	<p>On this screen you can practice using the interface. The diagram and the history are from the perspective of {{ context0.shape }}, however there are three forms below the diagram 
+	that let you enter decisions for each shape. If you don't understand something you can go back to read the instructions. Note that you will only see the timer when it is
+	{{ context0.shape }}'s turn to transfer or return. When you're ready you can continue on to take a small quiz testing your knowledge of the interface.</p>
+	<h1>{{ form0.self_msg }}</h1>
+	<div id="draw" class="drawingcontainer">
+		<div id="timer{{ context0.pk }}" class="timer"></div>
+		<div id="drawing{{ context0.pk }}" class="drawing"></div>
+	</div>
+	<h3>{{ context0.shape|capfirst }}</h3>
+	<div id="submit{{ form0.pk }}">
+		{# include 'transition_form.html' with context=form0 #}
+		{% include 'game_form.html' with context=form0 %}
+	</div>
+	<h3>{{ context1.shape|capfirst }}</h3>
+	<div id="submit{{ form1.pk }}">
+		{# include 'transition_form.html' with context=form1 #}
+		{% include 'game_form.html' with context=form1 %}
+	</div>
+	<h3>{{ context2.shape|capfirst }}</h3>
+	<div id="submit{{ form2.pk }}">
+		{# include 'transition_form.html' with context=form2 #}
+		{% include 'game_form.html' with context=form2 %}
+	</div>
+
+	{% include 'history.html' with context=context0 %}
+
+	<div class='nav'>
+		<input type=button class=submit
+			value="Continue"
+			onClick="self.location='../pretest/'">
+		<input type=button class=submit
+			value="Instructions"
+			onClick="self.location='../instructions/'">
+		<input type=button class=submit
+			value="Restart"
+			onClick="self.location=window.location">
+	</div>
+{% endblock %}
+
+{% block onload %}
+{% include 'checkin.js' with context=context0 %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'html_base.html' %}
+{% block body %}
+<h1>Exit Survey</h1>
+<p>Almost finished! Please complete the survey below.</p>
+<form id='surveyform' method='post'>
+{% csrf_token %}
+{{ context.survey.as_p }}
+<table class='survey'>
+	<thead>
+		<tr>
+			<td>8. How much do you agree with the following statements?</td>
+		<td class='small'>strongly disagree</td>
+		<td class='small'>somewhat disagree</td>
+		<td class='small'>slightly disagree</td>
+		<td class='small'>neither agree nor disagree</td>
+		<td class='small'>slightly agree</td>
+		<td class='small'>somewhat agree</td>
+		<td class='small'>strongly agree</td>
+		</tr>
+	</thead>
+	<tbody>
+{% for field in context.machiv %}
+{% if field.errors %}
+	<tr><td colspan=100>{{ field.errors }}</td></tr>
+{% endif %}
+	<tr>
+		<td>{{ field.label }}</td>
+		{% for radio in field %}
+		<td class='small'>{{ radio }}</td>
+		{% endfor %}
+	</tr>
+{% endfor %}
+	</tbody>
+</table>
+<input type="submit" class="submitbutton" id="gamebutton" name="survey" value="Submit" />
+</form>
+{% endblock %}
+{% block onload %}
+$('.survey > tbody > tr > :nth-child(2)').remove();
+$('<br>').insertBefore('textarea');
+{% endblock %}

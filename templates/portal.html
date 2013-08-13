@@ -1,0 +1,55 @@
+{% extends "html_base.html" %}
+
+
+{% block body %}
+	<h1>{% block title %}Strategies of Token Exchange{% endblock %}</h1>
+
+	<p>{# Lets say we do 20 rounds per subject. 20 tokens x 3 transfer mult. x 3 part. x 20 rounds = 3600 tokens * $0.0007 = $2.52  #}
+	In this experiment you are given tokens and the opportunity to exchange them with others. {% block worth1 %} Each token is worth 0.02&cent;. That may seem like little but it is 
+	possible to earn up to 3600 tokens, which would yield $7.20 in bonuses. However, it is only possible to earn more than $0.80 by receiving tokens from other participants
+	{% endblock %}</p>
+
+	<p>Below is a turn in the experiment. {% block worker %}Each shape represents a MTurk worker.{% endblock %} The arrows represent transfers of tokens.  Below we see that the 
+	Circle has transfered 9 tokens to the Triangle, who returned 18 tokens. Triangle is also better off then before, by 9 tokens. Every transfer is multiplied by 3, so its easy to 
+	imagine how your total token earnings could accumulate rapidly. The labels on the shapes give their status. It is now Square's turn to transfer.</p>
+	
+	<div class="drawing" id="drawing{{ context.pk }}"></div>
+	
+	<p>You will also provided with a "history" table that represents the same information in the diagram. The table doesn't demonstrate the size the of transfers and returns by the 
+	size of arrows, nor does it give the current status of the participants, but it can help clarify the progression of the game.
+	At this point the square has her turn next, which again would involve transferring tokens to the others and waiting for their returns decision. After that Triangle would go, 
+	then Circle again, and so on. At each turn the diagram and the table will update.</p>
+
+	{% include 'history.html' %}
+
+	<p>At the start of each participant's turn they are given 20 tokens to transfer. Note that Circle decided not to transfer all her tokens. The other 11 went to her earnings.  After 
+	receiving the 18 tokens back from the Triangle, her total earnings for this turn would be 29. Each participant has 20 turns so if Circle continues to earn this amount each turn she 
+	would earn 580 tokens{% block worth2 %}, or about $1.16 in earnings{% endblock %}.</p>
+
+	<p>If Circle were able to transfer more of her tokens and receive all of more of them back she could come closer to earning 60 tokens per turn{% block worth3 %}, or $2.40 at the end of 
+	the experiment{% endblock %}. Circle can also earn more by receiving transfers from others and not returning all or any of the transfered tokens back.</p>
+
+	<p>This experiment works well with modern browsers such as Chrome, Firefox, and Safari. Please ensure that you have cookies enabled.</p>
+
+	<p>{% block consent %}Before the experiment can begin you must give your consent as a research participant. You will also be given more detailed instructions, and allowed to 
+	play a demo version of the experiment. {% endblock %}</p>
+
+	{% if disabled %}
+	<p>Please accept this HIT in order to participate.</p>
+	{% endif %}
+	{% if not disabled %}
+	<p>Please click "Continue" to proceed.</p>
+	<div class=nav>
+		<input type=button class="submit"
+			value="Continue"
+			onClick="self.location={% block next-loc %}'consent'{% endblock %}" />
+	</div>
+	{% endif %}
+		
+{% endblock %}
+
+{% block onload %}
+	{% include 'diagram.js' %}
+	getHistory();
+{% endblock %}
+
